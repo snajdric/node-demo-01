@@ -1,39 +1,72 @@
 function first() {
 
+  // forEach
+  // map (vzdy zachova pocet prvku)
+  // filter
+
+
   const arr1 = ['abc',  123, {attr1: 'attr1'}];
-  const arr2 = ['aaa',  111, {attr2: 'attr2'}];
-  // let i;
 
-  const maAnonFce1 = (element) => { // anaonymni funkce, je ji jedno, jak jsou pojmenovane
-    // console.log('ELEMENT 1 => ', element);
-  }
+  arr1.forEach((element, key) => {
+    console.log('muj prvek pole arr1', element),
+    console.log('muj klic pole arr1', key);
 
-  const maAnonFce2 = (element, key, attr3) => { // element, poradi prvku, cele pole
-    // console.log('ELEMENT 2 => ', element);
-    // console.log('KEY => ', key);
-    // console.log('SOME => ', attr3);
-  }
-
-  const delArr2 = arr2.filter((element) => {
-    if (element === 'aaa') {
-      return false;
-    }
-
-    return true
   })
 
-  console.log('Delete from arr2 ', delArr2);
+  arr1.push('eee'); // pridava vzdy na konec pole, funguje i nad konstantami, pozor na mutace !!!
+  arr1.splice(2, 0, 'OOO'); // position, number of items to remove, item
 
-  arr1.forEach(maAnonFce2); // predavam referenci, nevolam primo funkci
-  // maAnonFce1(); primo vola funkci
+  const novePole = arr1.map((prvek, klic) => {
+      console.log('map prvek pole arr1', prvek);
+      console.log('map klic pole arr1', klic);
+      if (prvek === 123) {
+        return 999;
+      }
 
-  arr2.forEach((element) => console.log('ELEMENT 3 => ', element));
+    return prvek;
+    });
+
+  console.log('******************');
+  console.log('Stare Pole: ', arr1);
+  console.log('Nove Pole: ', novePole);
+  console.log('******************');
+
+  const filterPole = arr1.filter((prvek, klic) => {
+
+    if (prvek !== 123) {
+      return true;
+    }
+    return false;
+  });
+
+  console.log('******************');
+  console.log('Stare Pole: ', arr1);
+  console.log('Nove Pole: ', filterPole);
+  console.log('******************');
 
 }
 
-export function second(someText, someNumber) {
-  const result = `${someText} -- ${someNumber}`;
-  return result;
+function second() {
+
+  // const pc
+  const seznam = [
+    { name: 'pc', status: 'online' },
+    { name: 'pc2', status: 'offline' },
+    { name: 'pc3', status: 'online' },
+  ];
+
+  const seznamOnline = seznam.filter((pc) => {
+    if (pc.status === 'online') {
+      return true;
+    }
+    return false;
+  });
+
+  console.log('seznam PC', seznam);
+  console.log('seznam online', seznamOnline);
+
 }
+
 
 export default first;
+export { second };

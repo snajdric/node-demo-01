@@ -7,6 +7,7 @@ import './routes';
 
 app.listen(3000, () => {
   first();
+  second();
   console.log('ES6 application listening on port 3000!');
   // const result = Second('asdfa', 67);
   // console.log(result);
